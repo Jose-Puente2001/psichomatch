@@ -1,3 +1,7 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { JwtContext } from "../Context/JwtContext";
+import { handleButtonVerPsicologos } from "../Utils/utils";
 import { ButtonLilacSlim } from "../Components/Buttons";
 import iconCognitiveBehavioral from "../assets/Icons/iconCognitiveBehavioral.svg";
 import iconInteractive from "../assets/Icons/iconInteractive.svg";
@@ -46,11 +50,17 @@ const services = [
 ];
 
 export const Services = () => {
+  const { jwt } = useContext(JwtContext);
+  const navigate = useNavigate();
+
   return (
     <div className="mx-auto px-2 sm:px-6 pt-16 lg:pt-24 xl:pt-[136px]">
       <div className="grid  md:grid-cols-2 xl:grid-cols-3 gap-4 grid-center ">
         {services.map((service) => (
-          <div key={service.name} className="group relative flex flex-col items-center">
+          <div
+            key={service.name}
+            className="group relative flex flex-col items-center"
+          >
             <div className="relative transform transition-transform flex items-center justify-center w-[310px] h-[400px] overflow-hidden rounded-2xl bg-[#F9F6FF]">
               <div className="transition-opacity group-hover:absolute group-hover:opacity-0">
                 <img src={service.imageSrc} alt={service.name} />
@@ -69,6 +79,7 @@ export const Services = () => {
       </div>
       <div className="flex justify-center items-center my-20 lg:my-24">
         <ButtonLilacSlim
+          onClick={() => handleButtonVerPsicologos(jwt, navigate)}
           text="Encontrar un psicólogo"
           additionalClasses="w-[384px]"
         />

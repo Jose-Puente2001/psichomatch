@@ -47,7 +47,7 @@ const TherapistPatientCita = () => {
             </p>
             {data &&
               data.map((reservation, index) => (
-                <div className="bg-violet-50 p-10">
+                <div key={index} className="bg-violet-50 p-10">
                   <h1>
                     <span className="font-bold">Fecha: </span>
                     {reservation.Availability.date}

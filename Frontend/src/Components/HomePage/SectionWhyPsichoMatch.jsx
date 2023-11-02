@@ -1,8 +1,12 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { JwtContext } from "../../Context/JwtContext";
+import { handleButtonVerPsicologos } from "../../Utils/utils";
+import { ButtonBlack } from "../Buttons";
 import WomenImg from "../../assets/Images/women.png";
 import iconOne from "../../assets/Icons/iconWhyPM-One.svg";
 import iconTwo from "../../assets/Icons/iconWhyPM-Two.svg";
 import iconThree from "../../assets/Icons/iconWhyPM-Three.svg";
-import { ButtonBlack } from "../Buttons";
 
 const lists = [
   {
@@ -26,6 +30,9 @@ const lists = [
 ];
 
 export const SectionWhyPsichoMatch = () => {
+  const { jwt } = useContext(JwtContext);
+  const navigate = useNavigate();
+
   return (
     <section>
       <div className="py-8 sm:py-12 lg:py-16">
@@ -50,7 +57,11 @@ export const SectionWhyPsichoMatch = () => {
               ))}
             </div>
             <div className="flex justify-center items-center mt-12">
-              <ButtonBlack text="Agendar ahora" additionalClasses="w-[279px]" />
+              <ButtonBlack
+                onClick={() => handleButtonVerPsicologos(jwt, navigate)}
+                text="Agendar ahora"
+                additionalClasses="w-[279px]"
+              />
             </div>
           </div>
           <div className="flex justify-center items-center">

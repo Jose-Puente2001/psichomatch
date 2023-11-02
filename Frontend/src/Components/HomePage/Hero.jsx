@@ -1,7 +1,14 @@
 import imgHero from "../../assets/Images/img-hero.png";
 import { ButtonLilacSlim } from "../Buttons";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { JwtContext } from "../../Context/JwtContext";
+import { handleButtonVerPsicologos } from "../../Utils/utils";
 
 const Hero = () => {
+  const { jwt } = useContext(JwtContext);
+  const navigate = useNavigate();
+
   return (
     <div className="flex flex-col my-6 lg:flex-row mx-8 sm:mx-12 md:mx-16 lg:mx-24 xl:mx-32 gap-12 md:gap-4">
       <div className="flex justify-between flex-col gap-6">
@@ -14,7 +21,8 @@ const Hero = () => {
         </p>
         <div className="flex justify-center md:justify-start">
           <ButtonLilacSlim
-            additionalClasses="w-[384px]"
+            onClick={() => handleButtonVerPsicologos(jwt, navigate)}
+            additionalClasses="w-[350px]"
             text="Encontrar un psicólogo"
           />
         </div>

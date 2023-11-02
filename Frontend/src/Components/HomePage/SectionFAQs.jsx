@@ -1,3 +1,8 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { JwtContext } from "../../Context/JwtContext";
 import { ComponentFAQs } from "./ComponentFAQs";
 import { ButtonLilacSlim } from "../Buttons";
 
@@ -22,6 +27,23 @@ const faqs = [
 ];
 
 export const SectionFAQs = () => {
+  const { jwt } = useContext(JwtContext);
+  const navigate = useNavigate();
+
+  const handleButton = () => {
+    if (jwt && jwt.role === "therapist") {
+      // Mensaje informativo
+      const MySwal = withReactContent(Swal);
+      MySwal.fire({
+        title: <p>¡Ya eres parte de nuestro equipo de Psicologos!</p>,
+        icon: "info",
+      });
+    } else {
+      // Redirige a /registerTherapist si el rol no es 'therapis'
+      navigate("/registerTherapist");
+    }
+  };
+
   return (
     <div className="mx-8 sm:px-16 md:mx-24 lg:mx-28 my-12">
       <h3 className="text-2xl text-center font-bold text-black mb-8">
@@ -37,7 +59,11 @@ export const SectionFAQs = () => {
         ))}
       </div>
       <div className="flex justify-center items-center mt-12">
-        <ButtonLilacSlim text="Buscar un psicólogo" additionalClasses="my-4 lg:my-10 w-[331px]" />
+        <ButtonLilacSlim
+          onClick={handleButton}
+          text="Únete al equipo"
+          additionalClasses="my-4 lg:my-10 w-[331px]"
+        />
       </div>
     </div>
   );

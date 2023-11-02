@@ -46,10 +46,10 @@ const Dashboard = function () {
           <h2 className="mb-12 mt-1 pb-1 text-xl font-semibold text-center">
             Historial de Citas
           </h2>
-          {console.log(data)}
+          {/* {console.log(data)} */}
           {data &&
             data.map((reservation, index) => (
-              <div className="bg-violet-50 p-10">
+              <div className="bg-violet-50 p-10" key={index}>
                 <h2>
                   <span className="font-bold">Fecha: </span>
                   {new Date(reservation.Availability.date).toLocaleDateString()}

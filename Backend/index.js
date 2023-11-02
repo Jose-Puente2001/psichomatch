@@ -32,7 +32,7 @@ const fillDataSequentially = async () => {
 
 const port = process.env.PORT || 3001;
 
-conn.sync({ force: true }).then(() => {
+conn.sync().then(() => {
   server.listen(port, () => {
     fillDataSequentially();
 

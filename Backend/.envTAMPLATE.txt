@@ -1,0 +1,20 @@
+#LOCAL HOST
+PORT=3001
+DB_USER = postgres
+DB_PASSWORD = 1234
+DB_HOST = localhost
+DB_PORT=5432
+DB_NAME=psichomatchdb
+
+GOOGLE_CLIENT_ID=875352270811-it0cvq7ac6p1as5i8uscvsj4sd7uc448.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=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
+CHANGE_PASS= http://localhost:3001/recoverPass2
+JWT_SECRET=123456 #LLave maestra
+
+# RENDER
+#PORT=3001
+#DB_USER=postgres
+#DB_PASSWORD=x3a28AuxbBzYXXHUgxfsAiy8koj2YA7i
+#DB_HOST=dpg-cii0dc59aq012eon8i70-a.oregon-postgres.render.com
+#DB_PORT=5432
+#DB_NAME=psichomatchdb

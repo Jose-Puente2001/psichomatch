@@ -38,7 +38,7 @@ const Dashboard = function () {
   }, [params.id, data]);
 
   return (
-    <div className="flex w-full h-screen items-center justify-center flex-col my-12">
+    <div className="flex w-full items-center justify-center flex-col my-12">
       <div className="flex justify-start gap-4 self-start px-6 ml-6 md:ml-8 lg:ml-16">
         <img src={iconHome} alt="Home Psicologos" />
         <div className="text-lg text-black font-medium">

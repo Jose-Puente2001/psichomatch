@@ -28,7 +28,7 @@ const JwtProvider = ({ children }) => {
       setJwt({
         id: decodedToken.id,
         token: token,
-        role: decodedToken.id,
+        role: decodedToken.role,
       });
     }
   };

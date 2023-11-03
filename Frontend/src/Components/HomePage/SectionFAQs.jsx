@@ -28,10 +28,11 @@ const faqs = [
 
 export const SectionFAQs = () => {
   const { jwt } = useContext(JwtContext);
+  
   const navigate = useNavigate();
 
   const handleButton = () => {
-    if (jwt && jwt.role === "therapist") {
+    if (jwt && jwt.jwt.role === "therapist") {
       // Mensaje informativo
       const MySwal = withReactContent(Swal);
       MySwal.fire({

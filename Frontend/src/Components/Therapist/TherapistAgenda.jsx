@@ -12,7 +12,7 @@ function TherapistAgenda() {
 
   const loadPatientReservation = async (id) => {
     const response = await axios.get(
-      `http://localhost:3001/reservation/therapist/${params.id}`
+      `https://psicomatchapi.onrender.com/reservation/therapist/${params.id}`
     );
     const patientReservation = response.data;
     console.log(patientReservation);
@@ -21,7 +21,7 @@ function TherapistAgenda() {
 
   const deletePatientReservation = async (id) => {
     const response = await axios.delete(
-      `http://localhost:3001/reservation/${id}`
+      `https://psicomatchapi.onrender.com/reservation/${id}`
     );
     const deletereservation = response.data;
     setData(data.filter((data) => data.id !== id));

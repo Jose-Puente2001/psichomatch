@@ -7,10 +7,13 @@ import NavLinksPatientMobile from "./NavLinksPatientMobile";
 import NavLinksTherapistMobile from "./NavLinksTherapistMobile";
 import NavLinksWithoutAccess from "./NavLinksWithoutAccess";
 import PropTypes from "prop-types";
+import { useContext } from "react";
+import { JwtContext } from "../../Context/JwtContext";
 
 function MobileMenu({ jwt, mobileMenuOpen, setMobileMenuOpen, handleAccountExit }) {
   const location = useLocation();
-
+  const nuevoJwt = useContext(JwtContext);
+  console.log(nuevoJwt)
   return (
     <Dialog
       as="div"
@@ -35,14 +38,14 @@ function MobileMenu({ jwt, mobileMenuOpen, setMobileMenuOpen, handleAccountExit 
         <div className="mt-6 flow-root">
           <div className="-my-6 divide-y divide-gray-500/10">
             <div className="space-y-2 py-6">
-              {jwt.token !== undefined ? (
+              {nuevoJwt.jwt.token !== undefined ? (
                 <>
-                  {jwt.role === "patient" && (
+                  {nuevoJwt.role === "patient" && (
                     <>
                       <NavLinksPatientMobile jwt={jwt} />
                     </>
                   )}
-                  {jwt.role === "therapist" && (
+                  {nuevoJwt.role === "therapist" && (
                     <>
                       <NavLinksTherapistMobile jwt={jwt} />
                     </>
@@ -53,9 +56,9 @@ function MobileMenu({ jwt, mobileMenuOpen, setMobileMenuOpen, handleAccountExit 
               )}
             </div>
             <div className="py-6 gap-4 flex flex-col items-start">
-              {jwt.token !== undefined ? (
+              {nuevoJwt.jwt.token !== undefined ? (
                 <>
-                  {jwt.role === "patient" && (
+                  {nuevoJwt.jwt.role === "patient" && (
                     <>
                       {location.pathname === `/psicologos/${jwt?.id}` && (
                         <SearchBar />

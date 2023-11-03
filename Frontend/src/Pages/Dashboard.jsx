@@ -37,16 +37,15 @@ const Dashboard = function () {
   }, [params.id]);
 
   return (
-    <div className="flex w-full h-screen items-center justify-center flex-col">
+    <div className="flex w-full items-center justify-center flex-col">
       <div className="mx-12 md:mx-20">
         <CalendarDescription descriptionCalendar="En este espacio encontrarás tu historial de citas." />
       </div>
       <main>
-        <section className="my-5">
-          <h2 className="mb-12 mt-1 pb-1 text-xl font-semibold text-center">
-            Historial de Citas
-          </h2>
-          {/* {console.log(data)} */}
+        <h2 className="mb-12 mt-1 pb-1 text-xl font-semibold text-center">
+          Historial de Citas
+        </h2>
+        <section className="my-5 grid  gap-5 m-5 md:grid-cols-2 xl:grid-cols-3">
           {data &&
             data.map((reservation, index) => (
               <div className="bg-violet-50 p-10" key={index}>

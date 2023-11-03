@@ -11,7 +11,7 @@ const TherapistPatientCita = () => {
 
   const loadPatientReservation = async (id) => {
     const response = await axios.get(
-      `http://localhost:3001/reservation/therapist/${params.id}`
+      `https://psicomatchapi.onrender.com/reservation/therapist/${params.id}`
     );
     const patientReservation = response.data;
     setData(patientReservation);
@@ -19,7 +19,7 @@ const TherapistPatientCita = () => {
 
   const deletePatientReservation = async (id) => {
     const response = await axios.delete(
-      `http://localhost:3001/reservation/${id}`
+      `https://psicomatchapi.onrender.com/reservation/${id}`
     );
     const deletereservation = response.data;
     setData(data.filter((data) => data.id !== id));
@@ -41,10 +41,10 @@ const TherapistPatientCita = () => {
       <div className="flex justify-center items-center flex-col gap-4">
         <div className="md:mx-6">
           <CalendarDescription descriptionCalendar="En este espacio encontrarás tú historial de citas con los pacientes que han agendado contigo." />
-          <div className="p-12">
             <p className="text-center font-semibold text-2xl text-black mb-5">
               Paciente con cita agendada
             </p>
+          <div className="my-5 grid  gap-5 m-5 md:grid-cols-2 xl:grid-cols-3">
             {data &&
               data.map((reservation, index) => (
                 <div key={index} className="bg-violet-50 p-10">

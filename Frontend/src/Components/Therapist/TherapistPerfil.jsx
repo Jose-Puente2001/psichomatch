@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { getCategories } from "../../redux/actions/category";
@@ -8,12 +8,15 @@ import axios from "axios";
 import { getTherapistById, updateTherapist } from "../../redux/actions/therapist";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import Agenda from "../Agenda";
 import iconBasic from "../../assets/Icons/iconBasic.svg";
 import iconPremium from "../../assets/Icons/iconPremium.svg";
 import iconProfesional from "../../assets/Icons/iconProfesional.svg";
+import { JwtContext } from "../../Context/JwtContext";
 
 function TherapistPerfil() {
+
+  const { destroySession } = useContext(JwtContext);
+  const navigate = useNavigate();
 
   const { id } = useParams();
   const therapist = useSelector((state) => state.therapist.therapist);
@@ -493,6 +496,41 @@ function TherapistPerfil() {
           Actualizar perfil
         </button>
       </form>
+      <>
+          <div className="flex justify-center flex-col">
+            <h3 className="text-2xl font-bold text-start">Sección Crítica</h3>
+            <p>Una vez eliminada tu cuenta deberás crear otra cuenta.</p>
+            <hr className="my-3 border-zinc-200 dark:border-zinc-600" />
+            <button
+            className="bg-red-400 font-bold rounded-full w-96 py-2 mx-auto my-2"
+            type="submit"
+            onClick={async () => {
+              try {
+                const requestOptions = {
+                  method: 'DELETE',
+                  redirect: 'follow'
+                };
+
+                const response = await fetch(`https://psicomatchapi.onrender.com/therapist/delete/${id}` , requestOptions);
+                const result = await response.text();
+                const MySwal = withReactContent(Swal);
+                MySwal.fire({
+                  title: "Se elimino la cuenta correctamente.",
+                  text: 'Serás redirigido al home.',
+                  icon: "success",
+                });
+                destroySession();
+                navigate("/")
+
+              } catch (error) {
+                console.log('error', error);
+              }
+            }}
+          >
+            Eliminar cuenta
+          </button>
+          </div>
+      </>
       {/* <div className="flex flex-col mb-10">
         <div className="flex items-center ml-56">
           <p className="bg-violet-100 rounded-full w-20 h-20 flex items-center justify-center">

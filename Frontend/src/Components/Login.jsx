@@ -159,7 +159,7 @@ const Login = () => {
               </button>
               <a
                 className="flex items-center justify-center shadow appearance-none gap-2 border-4 border-gray-100"
-                href="https://psicomatchapi.onrender.com/patient/loginGoogle"
+                href="https://psicomatchapi.onrender.com/auth/google"
               >
                 <img src={googleIcon} alt="" />
                 Iniciar Sesión con Google

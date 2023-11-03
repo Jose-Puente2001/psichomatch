@@ -12,6 +12,7 @@ export const getCategories = () => {
         payload: data,
       });
     } catch (error) {
+      console.log("testestse")
       console.log(error.message);
     }
   };

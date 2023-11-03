@@ -21,7 +21,6 @@ import TherapistPatientCita from "../Components/Therapist/TherapistPatientCita";
 
 const DashboardTherapist = () => {
   const { id } = useParams();
-
   const params = useParams();
   const [data, setData] = useState(null);
 
@@ -65,7 +64,7 @@ const DashboardTherapist = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3001/therapist/getTherapistByID/${id}`,
+        `https://psicomatchapi.onrender.com/therapist/getTherapistByID/${id}`,
         requestOptions
       );
       if (!response.ok) {

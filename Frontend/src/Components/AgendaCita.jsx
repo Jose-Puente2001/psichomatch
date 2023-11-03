@@ -165,6 +165,7 @@ const AgendaCita = ({ patientId, therapistId }) => {
                             text: 'Toda la información fue enviada a tu mail',
                             icon: "success",
                           });
+                          // getAvailabilityByTherapistIdAndDate(y.TherapistId, nextDate(x), x);
                         }}
                         key={uuidv4()}
                         value={y.HourId}

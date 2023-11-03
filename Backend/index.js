@@ -31,13 +31,12 @@ const fillDataSequentially = async () => {
 };
 
 const port = process.env.PORT || 3001;
-
+// alter: true
 conn.sync().then(() => {
   server.listen(port, () => {
-    fillDataSequentially();
+    // fillDataSequentially();
 
     
     console.log("%s listening at ", port); // eslint-disable-line no-console
-    //fillTemperaments(Temperament);
   });
 });

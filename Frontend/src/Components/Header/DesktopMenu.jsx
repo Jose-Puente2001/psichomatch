@@ -5,15 +5,11 @@ import { useContext, useEffect, useState } from "react";
 import { JwtContext } from "../../Context/JwtContext";
 
 function DesktopMenu({ jwt, handleAccountExit }) {
-
-  // const [nuevoJwt, setNuevoJwt] = useState('')
-  const nuevoJwt = useContext(JwtContext);
-
   return (
     <>
-      {nuevoJwt.jwt.token !== undefined ? (
+      {jwt.token !== undefined ? (
         <>
-          {nuevoJwt.jwt.role === "patient" && (
+          {jwt.role === "patient" && (
             <>
               <NavLink
                 to={`dashboard/${jwt?.id}`}
@@ -30,7 +26,7 @@ function DesktopMenu({ jwt, handleAccountExit }) {
               {location.pathname === `/psicologos/${jwt?.id}` && <SearchBar />}
             </>
           )}
-          {nuevoJwt.jwt.role === "therapist" && (
+          {jwt.role === "therapist" && (
             <>
               <NavLink
                 to={`/dashboard/therapist/${jwt?.id}`}

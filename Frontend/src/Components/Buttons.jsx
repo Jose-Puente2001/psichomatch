@@ -14,12 +14,13 @@ export const ButtonBlack = ({ text, additionalClasses, onClick }) => {
 ButtonBlack.propTypes = {
   text: PropTypes.string.isRequired, // Propiedad 'text' como cadena requerida.
   additionalClasses: PropTypes.string, // Propiedad 'additionalClasses' como cadena opcional.
-  onClick: PropTypes.func.isRequired, // Propiedad 'onClick' como una funcion requerida.
+  onClick: PropTypes.func, // Propiedad 'onClick' como una funcion.
 };
 
-export const ButtonLilacSlim = ({ text, additionalClasses, onClick }) => {
+export const ButtonLilacSlim = ({ text, additionalClasses, onClick, type }) => {
   return (
     <button
+    type={type}
       onClick={onClick}
       className={`${additionalClasses} text-Gray-dark text-2xl font-semibold bg-[#CFBFFF] py-4 px-6 rounded-[48px] hover:bg-Purple-ligth`}
     >
@@ -30,6 +31,7 @@ export const ButtonLilacSlim = ({ text, additionalClasses, onClick }) => {
 
 ButtonLilacSlim.propTypes = {
   text: PropTypes.string.isRequired, // Propiedad 'text' como cadena requerida.
+  type: PropTypes.string.isRequired, // Propiedad 'type' como cadena requerida.
   additionalClasses: PropTypes.string, // Propiedad 'additionalClasses' como cadena opcional.
-  onClick: PropTypes.func.isRequired, // Propiedad 'onClick' como una funcion requerida.
+  onClick: PropTypes.func, // Propiedad 'onClick' como una funcion.
 };

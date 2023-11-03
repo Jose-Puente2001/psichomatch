@@ -10,6 +10,9 @@ import withReactContent from "sweetalert2-react-content";
 import iconBasic from "../assets/Icons/iconBasic.svg";
 import iconPremium from "../assets/Icons/iconPremium.svg";
 import iconProfesional from "../assets/Icons/iconProfesional.svg";
+import PlanCard from "../Components/PlanCard";
+import SubtitleRegister from "../Components/RegisterTherapist/SubtitleRegister";
+import { ButtonLilacSlim } from "../Components/Buttons";
 const RegisterTherapist = () => {
   const therapist = useSelector((state) => state.therapist.created);
   const dispatch = useDispatch();
@@ -149,40 +152,28 @@ const RegisterTherapist = () => {
       });
     }
   };
+
   return (
-    <div className="w-full p-12">
-      <form onSubmit={handleSubmit} className="flex flex-col ">
-        <h1 className="text-center font-bold text-3xl">
+    <div className="flex w-auto items-center justify-center mx-6 md:mx-10 py-12">
+      <form onSubmit={handleSubmit} className="flex flex-col mt-6">
+        <h1 className="text-center font-semibold text-[32px]">
           Registro de Psicólogo
         </h1>
-        <div className="flex items-center mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12">
-          <p className="bg-violet-100 rounded-full w-20 h-20 flex items-center justify-center">
-            1
-          </p>
-          <p className="ml-2 font-bold">Elige un plan</p>
-        </div>
-        <div className="xl:flex justify-center items-center md:grid mt-2 sm:grid gap-4 md:gap-8 lg:gap-12 xl:gap-16">
-          <div className="bg-violet-100 rounded mr-5 w-80 p-10 md:p-10 mb-4">
-            <div className="grid justify-items-center">
-              <img src={iconBasic} alt="" />
-              <div className="p-6">
-                <h1 className="text-xl font-bold">$29.99</h1>
-                <span>Dis/mes</span>
-              </div>
-            </div>
-            <div className="p-6">
-              <h2 className="font-bold">Plan Básico: </h2>
-
-              <ul className="list-disc">
-                <li>Perfil en el directorio de psicologos.</li>
-                <li>Hasta 10 citas programdas al mes.</li>
-                <li>
-                  Recordatorios de citas automaticas por correo electronico.
-                </li>
-                <li>Soporte por correo electronico</li>
-              </ul>
-            </div>
-            <div className="mt-5" key={uuidv4()}>
+        <SubtitleRegister number="1" titleSection="Elige un plan" />
+        <div className="flex flex-wrap flex-row justify-center items-stretch gap-8">
+          <div className="rounded-2xl py-12 bg-[#F9F6FF]">
+            <PlanCard
+              icon={iconBasic}
+              title="Básico"
+              price="29.99"
+              features={[
+                "Perfil en el directorio de psicólogos.",
+                "Hasta 10 citas programadas al mes.",
+                "Recordatorios de citas automáticos por correo electrónico.",
+                "Soporte por correo electrónico.",
+              ]}
+            />
+            <div className="ml-10 mt-6 flex justify-start gap-4" key={uuidv4()}>
               <input
                 className="mr-2"
                 type="radio"
@@ -190,255 +181,212 @@ const RegisterTherapist = () => {
                 checked={PlanId === 1}
                 onChange={() => setPlanId(1)}
               />
-              <label>{"Selecciona este plan"}</label>
+              <label className="text-blue-600">{"Selecciona este plan"}</label>
             </div>
           </div>
-
-          <div>
-            <div className="bg-lime-100 rounded mr-5 w-80 p-10 md:p-10 mb-4">
-              <div className="grid justify-items-center">
-                <img src={iconPremium} alt="" />
-                <div className="p-6">
-                  <h1 className="text-xl font-bold">$59.99</h1>
-                  <span>Dis/mes</span>
-                </div>
-              </div>
-              <div className="p-6">
-                <h2 className="font-bold">Plan Premium: </h2>
-                <ul className="list-disc">
-                  <li>Perfil destacado en el directorio de psicologos.</li>
-                  <li>Hasta 30 citas programadas al mes.</li>
-                  <li>
-                    Recordatorios de citas automaticas por correo electronico y
-                    SMS.
-                  </li>
-                  <li>
-                    Posibilidad de recibir resenas y calificaciones de los
-                    pacientes.
-                  </li>
-                  <li>
-                    Soporte prioritario por correo electronico y chat en vivo
-                  </li>
-                </ul>
-              </div>
-              <div className="mt-5" key={uuidv4()}>
-                <input
-                  type="radio"
-                  value={2}
-                  checked={PlanId === 2}
-                  onChange={() => setPlanId(2)}
-                />
-                <label>{"Selecciona este plan"}</label>
-              </div>
+          <div className="rounded-2xl py-12 bg-[#F6FFF5]">
+            <PlanCard
+              icon={iconPremium}
+              title="Medio"
+              price="59.99"
+              features={[
+                "Perfil destacado en el directorio de psicólogos.",
+                "Hasta 30 citas programadas al mes.",
+                "Recordatorios de citas automáticos por correo electrónico y SMS.",
+                "Posibilidad de recibir reseñas y calificaciones de los pacientes.",
+                "Soporte prioritario por correo electrónico y chat en vivo.",
+              ]}
+            />
+            <div className="ml-10 mt-6 flex justify-start gap-4" key={uuidv4()}>
+              <input
+                type="radio"
+                value={2}
+                checked={PlanId === 2}
+                onChange={() => setPlanId(2)}
+              />
+              <label className="text-blue-600">{"Selecciona este plan"}</label>
             </div>
           </div>
-
-          <div>
-            <div className="bg-blue-100 rounded w-80 p-10 md:p-10 mb-4">
-              <div className="grid justify-items-center">
-                <img src={iconProfesional} alt="" />
-                <div className="p-6">
-                  <h1 className="text-xl font-bold">$99.99</h1>
-                  <span>Dis/mes</span>
-                </div>
-              </div>
-              <div className="p-6">
-                <h2 className="font-bold">Plan Profesional: </h2>
-                <ul className="list-disc">
-                  <li>Perfil destacado en el directorio de psicologos.</li>
-                  <li>Cantidad ilimitada de citas programadas al mes</li>
-                  <li>
-                    Recordatorios de citas automaticas por correo electronico y
-                    SMS.
-                  </li>
-                  <li>
-                    Posibilidad de recibir resenas y calificaciones de los
-                    pacientes.
-                  </li>
-                  <li>
-                    Acceso a herramientas de gestion de pacientes y
-                    documentacion clinica en linea.
-                  </li>
-                  <li>
-                    Soporte prioritario por correo electronico, chat en vivo y
-                    asistencia telefonica
-                  </li>
-                </ul>
-              </div>
-              <div key={uuidv4()}>
-                <input
-                  type="radio"
-                  value={3}
-                  checked={PlanId === 3}
-                  onChange={() => setPlanId(3)}
-                />
-                <label>{"Selecciona este plan"}</label>
-              </div>
+          <div className="rounded-2xl py-12 bg-[#EFF1FE]">
+            <PlanCard
+              icon={iconProfesional}
+              title="Épico"
+              price="99.99 "
+              features={[
+                "Perfil destacado en el directorio de psicólogos.",
+                "Cantidad ilimitada de citas programadas al mes.",
+                "Recordatorios de citas automáticos por correo electrónico y SMS.",
+                "Posibilidad de recibir reseñas y calificaciones de los pacientes.",
+                "Acceso a herramientas de gestión de pacientes y documentación clínica en línea.",
+                "Soporte prioritario por correo electrónico, chat en vivo y asistencia telefónica.",
+              ]}
+            />
+            <div className="ml-10 mt-6 flex justify-start gap-4" key={uuidv4()}>
+              <input
+                type="radio"
+                value={3}
+                checked={PlanId === 3}
+                onChange={() => setPlanId(3)}
+              />
+              <label className="text-blue-600">{"Selecciona este plan"}</label>
             </div>
           </div>
         </div>
 
-        <div className="flex items-center mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12">
-          <p className="bg-violet-100 rounded-full w-20 h-20 flex items-center justify-center">
-            2
-          </p>
-          <p className="ml-2 font-bold">Llena tus datos</p>
+        <SubtitleRegister number="2" titleSection="Llena tus datos" />
+
+        <div className="flex flex-col justify-center items-center">
+          <div className="xl:text-center md:mt-2 sm:mt-2">
+            <label htmlFor="image" className="cursor-pointer">
+              <div className="w-40 h-40 mx-auto bg-violet-100 rounded-full flex items-center justify-center">
+                {image ? (
+                  <img
+                    src={image}
+                    alt="Tu Foto"
+                    className="w-full h-full rounded-full"
+                  />
+                ) : (
+                  <span className="text-lg font-bold">Tu Foto</span>
+                )}
+              </div>
+            </label>
+            <input
+              type="file"
+              id="image"
+              name="image"
+              className="hidden"
+              onChange={handleImageChange}
+            />
+          </div>
+
+          <div className="flex flex-col mt-5 sm:mt-3">
+            <label htmlFor="name">Nombre</label>
+            <input
+              className="rounded-lg mx-2 border border-[#e9e9e9] p-2 w-full sm:w-96"
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              name="name"
+              placeholder="Ingrese su nombre"
+            />
+          </div>
+
+          <div className="flex flex-col mt-3 sm:mt-3">
+            <label htmlFor="lastName">Apellido</label>
+            <input
+              className="rounded-lg mx-2 border border-[#e9e9e9] p-2 w-full sm:w-96"
+              type="text"
+              id="lastName"
+              value={lastName}
+              onChange={(e) => setLastname(e.target.value)}
+              name="lastName"
+              placeholder="Ingrese su apellido"
+            />
+          </div>
+
+          <div className="flex flex-col mt-3 sm:mt-3">
+            <label htmlFor="email">E-mail</label>
+            <input
+              className="rounded-lg mx-2 border border-[#e9e9e9] p-2 w-full sm:w-96"
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Ingrese su email"
+            />
+          </div>
+
+          <div className="flex flex-col mt-3 sm:mt-3">
+            <label htmlFor="password">Contraseña</label>
+            <input
+              className="rounded-lg mx-2 border border-[#e9e9e9] p-2 w-full sm:w-96"
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Ingrese su contrasena"
+            />
+          </div>
+
+          <div className="flex flex-col mt-3 sm:mt-3">
+            <label htmlFor="phone">Phone</label>
+            <input
+              className="rounded-lg mx-2 border border-[#e9e9e9] p-2 w-full sm:w-96"
+              type="text"
+              id="phone"
+              name="phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="Ingrese su telefono"
+            />
+          </div>
+
+          <div className="flex flex-col mt-3 sm:mt-3">
+            <label htmlFor="linkedIn">LinkedIn</label>
+            <input
+              className="rounded-lg mx-2 border border-[#e9e9e9] p-2 w-full sm:w-96"
+              type="text"
+              id="linkedIn"
+              name="linkedIn"
+              value={linkedIn}
+              onChange={(e) => setLinkedIn(e.target.value)}
+              placeholder="Ingrese su LinkedIn"
+            />
+          </div>
+
+          <div className="flex flex-col mt-3 sm:mt-3">
+            <label htmlFor="price">Precio</label>
+            <input
+              className="rounded-lg mx-2 border border-[#e9e9e9] p-2 w-full sm:w-96"
+              type="number"
+              id="price"
+              name="price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              placeholder="Ingrese su precio"
+              min="1"
+            />
+          </div>
+
+          <div className="flex flex-col mt-3 sm:mt-3">
+            <label htmlFor="adress">Direccion</label>
+            <textarea
+              className="rounded-lg mx-2 border border-[#e9e9e9] p-2 w-full sm:w-96"
+              id="adress"
+              name="adress"
+              value={adress}
+              onChange={(e) => setAdress(e.target.value)}
+              placeholder="Ingrese su direccion"
+            />
+          </div>
+
+          <div className="flex flex-col mt-3 sm:mt-3">
+            <label htmlFor="description">Descripción</label>
+            <textarea
+              className="rounded-lg mx-2 border border-[#e9e9e9] p-2 w-full sm:w-96"
+              id="description"
+              name="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Ingrese su descripcion"
+            />
+          </div>
         </div>
-
-      <div className="flex flex-col justify-center items-center">
-  <div className="xl:text-center md:mt-2 sm:mt-2">
-    <label htmlFor="image" className="cursor-pointer">
-      <div className="w-40 h-40 mx-auto bg-violet-100 rounded-full flex items-center justify-center">
-        {image ? (
-          <img
-            src={image}
-            alt="Tu Foto"
-            className="w-full h-full rounded-full"
-          />
-        ) : (
-          <span className="text-lg font-bold">Tu Foto</span>
-        )}
-      </div>
-    </label>
-    <input
-      type="file"
-      id="image"
-      name="image"
-      className="hidden"
-      onChange={handleImageChange}
-    />
-  </div>
-
-  <div className="flex flex-col mt-5 sm:mt-3">
-    <label htmlFor="name">Nombre</label>
-    <input
-      className="rounded border border-gray-700 p-2 w-full sm:w-96"
-      type="text"
-      id="name"
-      value={name}
-      onChange={(e) => setName(e.target.value)}
-      name="name"
-      placeholder="Ingrese su nombre"
-    />
-  </div>
-
-  <div className="flex flex-col mt-3 sm:mt-3">
-    <label htmlFor="lastName">Apellido</label>
-    <input
-      className="rounded border border-gray-700 p-2 w-full sm:w-96"
-      type="text"
-      id="lastName"
-      value={lastName}
-      onChange={(e) => setLastname(e.target.value)}
-      name="lastName"
-      placeholder="Ingrese su apellido"
-    />
-  </div>
-
-  <div className="flex flex-col mt-3 sm:mt-3">
-    <label htmlFor="email">E-mail</label>
-    <input
-      className="rounded border border-gray-700 p-2 w-full sm:w-96"
-      type="email"
-      id="email"
-      name="email"
-      value={email}
-      onChange={(e) => setEmail(e.target.value)}
-      placeholder="Ingrese su email"
-    />
-  </div>
-
-  <div className="flex flex-col mt-3 sm:mt-3">
-    <label htmlFor="password">Contraseña</label>
-    <input
-      className="rounded border border-gray-700 p-2 w-full sm:w-96"
-      type="password"
-      id="password"
-      name="password"
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-      placeholder="Ingrese su contrasena"
-    />
-  </div>
-
-  <div className="flex flex-col mt-3 sm:mt-3">
-    <label htmlFor="phone">Phone</label>
-    <input
-      className="rounded border border-gray-700 p-2 w-full sm:w-96"
-      type="text"
-      id="phone"
-      name="phone"
-      value={phone}
-      onChange={(e) => setPhone(e.target.value)}
-      placeholder="Ingrese su telefono"
-    />
-  </div>
-
-  <div className="flex flex-col mt-3 sm:mt-3">
-    <label htmlFor="linkedIn">LinkedIn</label>
-    <input
-      className="rounded border border-gray-700 p-2 w-full sm:w-96"
-      type="text"
-      id="linkedIn"
-      name="linkedIn"
-      value={linkedIn}
-      onChange={(e) => setLinkedIn(e.target.value)}
-      placeholder="Ingrese su LinkedIn"
-    />
-  </div>
-
-  <div className="flex flex-col mt-3 sm:mt-3">
-    <label htmlFor="price">Precio</label>
-    <input
-      className="rounded border border-gray-700 p-2 w-full sm:w-96"
-      type="number"
-      id="price"
-      name="price"
-      value={price}
-      onChange={(e) => setPrice(e.target.value)}
-      placeholder="Ingrese su precio"
-    />
-  </div>
-
-  <div className="flex flex-col mt-3 sm:mt-3">
-    <label htmlFor="adress">Direccion</label>
-    <textarea
-      className="rounded border border-gray-700 p-2 w-full sm:w-96"
-      id="adress"
-      name="adress"
-      value={adress}
-      onChange={(e) => setAdress(e.target.value)}
-      placeholder="Ingrese su direccion"
-    />
-  </div>
-
-  <div className="flex flex-col mt-3 sm:mt-3">
-    <label htmlFor="description">Descripción</label>
-    <textarea
-      className="rounded border border-gray-700 p-2 w-full sm:w-96"
-      id="description"
-      name="description"
-      value={description}
-      onChange={(e) => setDescription(e.target.value)}
-      placeholder="Ingrese su descripcion"
-    />
-  </div>
-</div>
-
-        <div className="flex items-center mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-12">
-          <p className="bg-violet-100 rounded-full w-20 h-20 flex items-center justify-center">
-            3
-          </p>
-          <p className="ml-2 font-bold">Enfoque y Pais </p>
-        </div>
+        <SubtitleRegister number="3" titleSection="Enfoque y Pais" />
         <div className="grid grid-cols-2 mt-10 mx-auto gap-1">
-          <p className="col-span-2 mb-5 font-bold">
+          <p className="col-span-2 mb-5 text-lg font-semibold">
             Elige la metodologia con la que trabajas
           </p>
 
           {categories?.map((category) => {
             return (
-              <div key={category.id}>
+              <div
+                className="ml-10 mt-1 flex justify-start gap-3"
+                key={category.id}
+              >
                 <input
                   type="radio"
                   value={category.id}
@@ -451,13 +399,15 @@ const RegisterTherapist = () => {
           })}
         </div>
         <div className="grid grid-cols-2 mt-10 mx-auto gap-1">
-          <p className="col-span-2 mb-5 font-bold">
+          <p className="col-span-2 mb-5 text-lg font-semibold">
             Elige tu pais de residencia
           </p>
-
           {countries?.map((country) => {
             return (
-              <div key={country.id}>
+              <div
+                className="ml-10 mt-1 flex justify-start gap-3"
+                key={country.id}
+              >
                 <input
                   type="radio"
                   value={country.id}
@@ -469,12 +419,12 @@ const RegisterTherapist = () => {
             );
           })}
         </div>
-        <button
-          className="bg-violet-300 rounded-full w-48 py-2 font-semibold mx-auto my-10"
+
+        <ButtonLilacSlim
           type="submit"
-        >
-          Crear perfil
-        </button>
+          text="Crear perfil"
+          additionalClasses="w-60 self-center my-10"
+        />
       </form>
     </div>
   );

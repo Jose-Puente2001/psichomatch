@@ -111,7 +111,7 @@ function TherapistPrecios({ therapist }) {
             min="1"
           />
           <button
-            className={`w-[300px] text-Gray-dark text-xl font-semibold bg-[#CFBFFF] py-1 px-6 rounded-[48px] hover:bg-Purple`}
+            className="w-[300px] text-Gray-dark text-xl font-semibold bg-[#CFBFFF] py-1 px-6 rounded-[48px] hover:bg-Purple"
           >
             Actualizar Precio
           </button>
@@ -133,7 +133,7 @@ function TherapistPrecios({ therapist }) {
             min="1"
           />
           <button
-            className={`w-[300] text-Gray-dark text-xl font-semibold bg-[#CFBFFF] py-1 px-6 rounded-[48px] hover:bg-Purple`}
+            className="w-[300] text-Gray-dark text-xl font-semibold bg-[#CFBFFF] py-1 px-6 rounded-[48px] hover:bg-Purple"
           >
             Actualizar Precio en {porcentaje}%
           </button>

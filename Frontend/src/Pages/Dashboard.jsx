@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -8,6 +8,7 @@ import {
   deleteReservation,
 } from "../api/reservation_api";
 import CalendarDescription from "../Components/CalendarDescription";
+import iconHome from "../assets/Icons/iconHome.svg";
 
 const Dashboard = function () {
   const params = useParams();
@@ -33,12 +34,17 @@ const Dashboard = function () {
   useEffect(() => {
     if (params.id) {
       loadPatientReservation(params.id);
-
     }
   }, [params.id, data]);
 
   return (
-    <div className="flex w-full h-screen items-center justify-center flex-col">
+    <div className="flex w-full h-screen items-center justify-center flex-col my-12">
+      <div className="flex justify-start gap-4 self-start px-6 ml-6 md:ml-8 lg:ml-16">
+        <img src={iconHome} alt="Home Psicologos" />
+        <div className="text-lg text-black font-medium">
+          Paciente / Mi Calendario
+        </div>
+      </div>
       <div className="mx-12 md:mx-20">
         <CalendarDescription descriptionCalendar="En este espacio encontrarás tu historial de citas." />
       </div>
@@ -47,9 +53,10 @@ const Dashboard = function () {
           Historial de Citas
         </h2>
         <section className="my-5 grid gap-5 m-5 md:grid-cols-2 xl:grid-cols-3">
+          {/* {console.log(data)} */}
           {data &&
             data?.map((reservation, index) => (
-              <div className="bg-violet-50 p-10" key={index}>
+              <div className="bg-violet-50 p-10 rounded-2xl" key={index}>
                 <h2>
                   <span className="font-bold">Fecha: </span>
                   {new Date(reservation.Availability.date).toLocaleDateString()}

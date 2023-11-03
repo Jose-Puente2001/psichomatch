@@ -9,5 +9,5 @@ return await axios.post(`https://psicomatchapi.onrender.com/availability/${id}`,
 }
 
 export const createReservation = async (AvailabilityId, PatientId, TherapistId) => {
-return await axios.post(`https://psicomatchapi.onrender.com/reservation/`, AvailabilityId, PatientId, TherapistId)
+return await axios.post(`https://psicomatchapi.onrender.com/reservation`, AvailabilityId, PatientId, TherapistId)
 }

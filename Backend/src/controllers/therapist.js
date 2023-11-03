@@ -1,6 +1,6 @@
 const { Therapist, Category, Country } = require("../db");
 const { fillTherapistData } = require("../common/filledDates");
-const { Op , fn, where,col} = require("sequelize");
+const { Op , fn, where, col } = require("sequelize");
 const bcrypt = require("bcryptjs");
 const  {tokenSign}  = require('../helpers/generateToken')
 // Functions for therapist CRUD
@@ -584,8 +584,8 @@ const searchByNameLastName = async (req, res) => {
 
     res.status(200).json({ therapists, totalPages, actualPage });
   } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+    res.status(500).json({ error: error.message });
+  }
 }
 
 const searchByPrice = async (req, res) => {

@@ -13,6 +13,7 @@ import iconProfesional from "../assets/Icons/iconProfesional.svg";
 import PlanCard from "../Components/PlanCard";
 import SubtitleRegister from "../Components/RegisterTherapist/SubtitleRegister";
 import { ButtonLilacSlim } from "../Components/Buttons";
+import SectionPlans from "../Components/RegisterTherapist/SectionPlans";
 const RegisterTherapist = () => {
   const therapist = useSelector((state) => state.therapist.created);
   const dispatch = useDispatch();
@@ -156,11 +157,11 @@ const RegisterTherapist = () => {
   return (
     <div className="flex w-auto items-center justify-center mx-6 md:mx-10 py-12">
       <form onSubmit={handleSubmit} className="flex flex-col mt-6">
-        <h1 className="text-center font-semibold text-[32px]">
+        <h1 className="text-center font-semibold text-2xl md:text-3xl">
           Registro de Psicólogo
         </h1>
         <SubtitleRegister number="1" titleSection="Elige un plan" />
-        <div className="flex flex-wrap flex-row justify-center items-stretch gap-8">
+        {/* <div className="flex flex-wrap flex-row justify-center items-stretch gap-8">
           <div className="rounded-2xl py-12 bg-[#F9F6FF]">
             <PlanCard
               icon={iconBasic}
@@ -231,8 +232,8 @@ const RegisterTherapist = () => {
               <label className="text-blue-600">{"Selecciona este plan"}</label>
             </div>
           </div>
-        </div>
-
+        </div> */}
+<SectionPlans PlanId={PlanId} setPlanId={setPlanId} />
         <SubtitleRegister number="2" titleSection="Llena tus datos" />
 
         <div className="flex flex-col justify-center items-center">
@@ -376,7 +377,7 @@ const RegisterTherapist = () => {
           </div>
         </div>
         <SubtitleRegister number="3" titleSection="Enfoque y Pais" />
-        <div className="grid grid-cols-2 mt-10 mx-auto gap-1">
+        <div className="flex flex-col md:grid grid-cols-2 mt-10 mx-auto gap-1">
           <p className="col-span-2 mb-5 text-lg font-semibold">
             Elige la metodologia con la que trabajas
           </p>
@@ -398,7 +399,7 @@ const RegisterTherapist = () => {
             );
           })}
         </div>
-        <div className="grid grid-cols-2 mt-10 mx-auto gap-1">
+        <div className="flex flex-col md:grid grid-cols-2 mt-10 mx-auto gap-1">
           <p className="col-span-2 mb-5 text-lg font-semibold">
             Elige tu pais de residencia
           </p>

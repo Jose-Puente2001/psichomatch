@@ -44,10 +44,10 @@ const TherapistPatientCita = () => {
             <p className="text-center font-semibold text-2xl text-black mb-5">
               Paciente con cita agendada
             </p>
-          <div className="my-5 grid  gap-5 m-5 md:grid-cols-2 xl:grid-cols-3">
+          <div className="my-5 grid gap-5 m-5 md:grid-cols-2 xl:grid-cols-3">
             {data &&
               data.map((reservation, index) => (
-                <div key={index} className="bg-violet-50 p-10">
+                <div key={index} className="bg-violet-50 p-10 rounded-2xl">
                   <h1>
                     <span className="font-bold">Fecha: </span>
                     {reservation.Availability.date}

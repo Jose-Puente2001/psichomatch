@@ -10,6 +10,7 @@ import IconArrowRight from "../assets/Icons/arrowRight.svg";
 import IconArrowLeft from "../assets/Icons/arrowLeft.svg";
 import Swal from 'sweetalert2'
 import withReactContent from "sweetalert2-react-content";
+import axios from "axios";
 
 const AgendaCita = ({ patientId, therapistId }) => {
   const [hour, setHour] = useState([]);
@@ -40,6 +41,14 @@ const AgendaCita = ({ patientId, therapistId }) => {
     }
   };
 
+  const sendMail = async (AvailabilityId, PatientId, TherapistId) => {
+    await axios.post("https://psicomatchapi.onrender.com/reservation/sendMail", {
+      AvailabilityId,
+      PatientId,
+      TherapistId,
+    });
+  }
+
   const addReservation = async (AvailabilityId, PatientId, TherapistId) => {
     try {
       const { data } = await createReservation({
@@ -49,6 +58,7 @@ const AgendaCita = ({ patientId, therapistId }) => {
       });
 
       if (data) {
+        // console.log(data)
         // Actualiza los datos de availability si data es verdadero
         setAvailability((prev) => {
           const updatedAvailability = [...prev];
@@ -159,6 +169,7 @@ const AgendaCita = ({ patientId, therapistId }) => {
                       <p
                         onClick={() => {
                           addReservation(y.id, patientId, y.TherapistId);
+                          sendMail(y.id, patientId, y.TherapistId);
                           const MySwal = withReactContent(Swal);
                           MySwal.fire({
                             title: 'Se registro correctamente la cita.',

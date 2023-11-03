@@ -12,6 +12,7 @@ import IconLinkedin from "../assets/Icons/linkedin.svg";
 import IconArrowRight from "../assets/Icons/arrowRight.svg";
 import IconArrowLeft from "../assets/Icons/arrowLeft.svg";
 import FilterTherapistResponsive from "./FilterTherapistResponsive";
+import iconHome from "../assets/Icons/iconHome.svg";
 
 const Therapist = () => {
   const [showFullDescription, setShowFullDescription] = useState(false);
@@ -82,6 +83,12 @@ const Therapist = () => {
 
   return (
     <div className="mx-auto">
+      <div className="flex justify-start gap-4 self-start mt-12 px-6 ml-6 md:ml-8 lg:ml-16">
+        <img src={iconHome} alt="Home Psicologos" />
+        <div className="text-lg text-black font-medium">
+          Paciente / Psicólogos
+        </div>
+      </div>
       <div className="flex flex-col md:flex-row justify-center items-center mt-8 md:mt-16 mb-8 mx-auto gap-6">
         <FilterTherapistResponsive />
         <div>

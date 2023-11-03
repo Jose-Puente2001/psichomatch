@@ -336,7 +336,7 @@ function TherapistPerfil() {
           Actualizar perfil
         </button>
       </form>
-      <div className="flex justify-center flex-col">
+      {/* <div className="flex justify-center flex-col">
         <h3 className="text-2xl font-semibold text-start">Sección Crítica</h3>
         <p>Una vez eliminada tu cuenta deberás crear otra cuenta.</p>
         <hr className="my-3 border-zinc-200 dark:border-zinc-600" />
@@ -369,7 +369,7 @@ function TherapistPerfil() {
         >
           Eliminar cuenta
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
